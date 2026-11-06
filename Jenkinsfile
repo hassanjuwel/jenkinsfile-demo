@@ -2,43 +2,22 @@ pipeline {
 
     agent any
 
+    parameters {
+
+        string(
+            name: 'USERNAME',
+            defaultValue: 'Admin'
+        )
+
+    }
+
     stages {
 
-        stage('Checkout') {
+        stage('Welcome') {
 
             steps {
 
-                echo 'Source Code Checkout'
-
-            }
-
-        }
-
-        stage('Build') {
-
-            steps {
-
-                echo 'Building Application'
-
-            }
-
-        }
-
-        stage('Test') {
-
-            steps {
-
-                echo 'Running Tests'
-
-            }
-
-        }
-
-        stage('Deploy') {
-
-            steps {
-
-                echo 'Deploying Application'
+                bat "echo Welcome ${params.USERNAME}"
 
             }
 
