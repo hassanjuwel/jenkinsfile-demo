@@ -4,11 +4,11 @@ pipeline {
 
     stages {
 
-        stage('Welcome') {
+        stage('Welcome to Jenkins') {
 
             steps {
 
-                echo 'Running From Jenkinsfile'
+                echo 'Modified From Jenkinsfile'
 
             }
 
