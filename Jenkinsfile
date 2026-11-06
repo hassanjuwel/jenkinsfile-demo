@@ -5,19 +5,38 @@ pipeline {
     parameters {
 
         string(
-            name: 'USERNAME',
-            defaultValue: 'Admin'
+            name: 'APP_NAME',
+            defaultValue: 'MyApp'
+        )
+
+        choice(
+            name: 'ENV',
+            choices: ['DEV','QA','PROD']
         )
 
     }
 
     stages {
 
-        stage('Welcome') {
+        stage('Build Information') {
 
             steps {
 
-                bat "echo Welcome ${params.USERNAME}"
+                echo "Application: ${params.APP_NAME}"
+
+                echo "Environment: ${params.ENV}"
+
+            }
+
+        }
+
+        stage('System Info') {
+
+            steps {
+
+                bat 'hostname'
+
+                bat 'git --version'
 
             }
 
