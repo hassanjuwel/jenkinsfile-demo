@@ -2,41 +2,31 @@ pipeline {
 
     agent any
 
-    parameters {
+    environment {
 
-        string(
-            name: 'APP_NAME',
-            defaultValue: 'MyApp'
-        )
-
-        choice(
-            name: 'ENV',
-            choices: ['DEV','QA','PROD']
-        )
+        APP_NAME = 'JenkinsTraining'
 
     }
 
     stages {
 
-        stage('Build Information') {
+        stage('Build Info') {
 
             steps {
 
-                echo "Application: ${params.APP_NAME}"
+                echo "Build Number: ${env.BUILD_NUMBER}"
 
-                echo "Environment: ${params.ENV}"
+                echo "Application: ${env.APP_NAME}"
 
             }
 
         }
 
-        stage('System Info') {
+        stage('Workspace') {
 
             steps {
 
-                bat 'hostname'
-
-                bat 'git --version'
+                bat 'dir'
 
             }
 
